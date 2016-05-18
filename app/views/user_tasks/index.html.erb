@@ -7,19 +7,13 @@
     <div id="task-form"></div>
   </div>
   <div class="col-sm-8">
-    <% @user_tasks.each do |user_task| %>
-      <div class="well">
-        <%= user_task.description %></td>
-        <%= user_task.due %></td>
-        <%= link_to 'Show', user_task %></td>
-        <%= link_to 'Edit', edit_user_task_path(user_task) %></td>
-        <%= link_to 'Destroy', user_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <h3>All tasks</h3>
+      <div id="tasks">
+        <%= render @user_tasks %>
       </div>
-    <% end %>
   </div>
 </div>
 
 
-<br>
 
-<%= link_to 'New User task', new_user_task_path %>
+      <!-- % @user_tasks.each do |user_task| % -->
