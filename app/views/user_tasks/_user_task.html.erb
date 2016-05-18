@@ -2,5 +2,10 @@
 		<%= user_task.description %>
         <%= user_task.due %>
         <%= link_to 'Edit', edit_user_task_path(user_task), remote: true %>
-        <%= link_to 'Destroy', user_task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to fa_icon('trash', text: 'Delete'), user_task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <span class="pull-right">
+        	<em>
+        		<%= user_task.due.try(:stamp, 'Monday, 12/31/16') %>
+        	</em>
+        </span>
     </div>
