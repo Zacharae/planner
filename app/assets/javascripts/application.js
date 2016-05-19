@@ -17,3 +17,23 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+
+function hoverIn(event){
+  $(event.target).addClass('text-muted');
+
+  $(event.target).closest('a').children('i')
+    .removeClass('fa-square-o')
+    .addClass('fa-check-square-o');
+}
+
+function hoverOut(event){
+  $(event.target).removeClass('text-muted');
+
+  $(event.target).closest('a').children('i')
+    .removeClass('fa-check-square-o')
+    .addClass('fa-square-o');
+}
+
+$(document).ready(function(){
+  $('.task').hover(hoverIn, hoverOut);
+});

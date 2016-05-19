@@ -18,19 +18,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import "bootstrap-datepicker3"
+@import "bootstrap-datepicker3";
 
-// #task-form {
-// 	display: none;
-// }
+#task-form {
+  display: none;
+}
 
-// .task {
-// 	a {
-// 		color: 333;
-// 		&:hover {
-// 			text-decoration: line-through;
-// 			color: red;
-// 		}
-// 	}
-	
-// }
+a.task {
+  color: #333;
+
+  &:hover {
+    text-decoration: line-through;
+    color: #ccc;
+  }
+}
