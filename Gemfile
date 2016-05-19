@@ -28,6 +28,8 @@ gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-rails'
 gem 'stamp'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
