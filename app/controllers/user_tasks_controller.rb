@@ -105,11 +105,7 @@ class UserTasksController < ApplicationController
     end
 
     def set_all_tasks
-      if user_signed_in?
         @user_tasks = UserTask.where.user_tasks.order(:due)
         #(user_id: current_user.id).order(:due)
-      else
-        @user_tasks = nil
-      end
     end
 end
