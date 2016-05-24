@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # sign out
   get '/signout' => 'sessions#destroy', as: :signout
 
+  get '/signin' => 'sessions#new',  as: :signin
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
