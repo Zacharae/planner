@@ -1,5 +1,6 @@
 <title>planner</title>
 <p id="notice"><%= notice %></p>
+<% if current_user  %>
 <div
   class="fb-like"
   data-share="true"
@@ -21,5 +22,7 @@
   </div>
 </div>
 
-
+<% else %>
+  <% redirect_to signin_url %>
+<% end %>
       <!-- % @user_tasks.each do |user_task| % -->

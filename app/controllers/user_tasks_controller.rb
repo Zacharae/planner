@@ -1,6 +1,10 @@
 class UserTasksController < ApplicationController
   before_action :set_user_task, only: [:show, :edit, :update, :destroy]
   before_action :set_user_tasks, only: [:index, :create, :update, :destroy]
+  before_action :authenticate_user!
+
+
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_task
 
   # GET /user_tasks
   # GET /user_tasks.json
@@ -73,13 +77,39 @@ class UserTasksController < ApplicationController
     @user_tasks = UserTask.order(:due)
   end
 
+    def authenticate_user!
+      redirect_to :signin unless current_user
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user_task
       @user_task = UserTask.find(params[:id])
+      if current_user.id == @user_task.user_id
+        @user_task
+      else
+        invalid_task
+      end
     end
+
+    def invalid_task
+      logger.error "can't access #{params[:id]}"
+      redirect_to user_tasks_url, notice: "Invalid task, access denied."
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_task_params
-      params.require(:user_task).permit(:description, :due)
+   
+        params.require(:user_task).permit(:description, :due)
+   
+    end
+
+    def set_all_tasks
+      if user_signed_in?
+        @user_tasks = UserTask.where.user_tasks.order(:due)
+        #(user_id: current_user.id).order(:due)
+      else
+        @user_tasks = nil
+      end
     end
 end

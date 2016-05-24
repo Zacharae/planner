@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :user_tasks, dependent: :destroy
+	
 	# Create user using JSON response returned from the facebook API
 	def self.create_with_omniauth(auth)
 		create! do |user|
